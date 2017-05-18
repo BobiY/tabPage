@@ -1,0 +1,13 @@
+<link rel="stylesheet" type="text/css" href="aa.css"/>
+<div class="aa">aa</div>
+
+<!--
+	id为script的div是用来加载外部脚本用的，一定要有
+-->
+<div id = "script"></div>
+<script type="text/javascript">
+	var script = document.createElement ("script");
+	script.type = "text/javascript";
+	script.src = "aa.js";
+	document.getElementById("script").appendChild(script);	
+</script>

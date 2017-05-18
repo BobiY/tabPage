@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			ul,li{list-style: none;}
+			
+		</style>
+	</head>
+	<body>
+		<!--
+        	所有选项卡要有一个共同的类名
+        	data-page是选项卡对应的页面名字（不带html）
+        -->
+		<ul>
+			<li class="tab" data-page = "aa">切换aa</li>
+			<li class="tab" data-page = "bb">切换bb</li>
+			<li class="tab" data-page = "cc">切换cc</li>
+			<li class="tab" data-page = "dd">切换dd</li>
+		</ul>
+		<div id="page"><div>
+		<script src="jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			function ajax(pageName){
+				var url = pageName + ".html";
+				$.ajax({
+					url:url,
+					success:function(data){
+						$("#page").html();
+						$("#page").html(data);
+					}
+				})
+			}
+			
+			function tab(classname){
+				var select = classname.indexOf(".")!=-1 ? classname : "." + classname
+				$(select).click(function(){
+					var pageName = $(this).attr("data-page")
+					ajax(pageName);
+				})
+			}
+			tab("tab")
+		</script>
+	</body>
+</html>
